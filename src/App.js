@@ -7,13 +7,29 @@ class App extends Component {
       toName: '',
       toEmail: '',
       subject: '',
-      body: ''
+      // body: ''
+      noun1: '',
+      noun2: '',
+      adjective1: '',
+      adjective2: ''
     };
+
     this.handleInputChange = this.handleInputChange.bind(this);
     this.submitForm = this.submitForm.bind(this);
   }
 
   submitForm = async () => {
+    if (
+      !this.state.toName.length ||
+      !this.state.toEmail.length ||
+      !this.state.subject.length ||
+      !this.state.noun1.length ||
+      !this.state.noun2.length ||
+      !this.state.adjective1.length ||
+      !this.state.adjective2.length
+    ) {
+      alert('All of the fields are required.');
+    }
     try {
       const emailResponse = await fetch(
         `https://statz-server.herokuapp.com/api/email`,
@@ -59,51 +75,86 @@ class App extends Component {
       marginRight: '40px'
     };
     return (
-      <form>
-        <label style={labelStyle}>
-          To Name:
-          <input
-            style={inputStyle}
-            name="toName"
-            value={this.state.toName}
-            onChange={this.handleInputChange}
-          />
-        </label>
-        <br />
-        <label style={labelStyle}>
-          To Email:
-          <input
-            style={inputStyle}
-            name="toEmail"
-            value={this.state.toEmail}
-            onChange={this.handleInputChange}
-          />
-        </label>
-        <br />
-        <label style={labelStyle}>
-          Subject:
-          <input
-            style={inputStyle}
-            name="subject"
-            value={this.state.subject}
-            onChange={this.handleInputChange}
-          />
-        </label>
-        <br />
-        <label style={labelStyle}>
-          Message:
-          <input
-            style={inputStyle}
-            name="body"
-            value={this.state.body}
-            onChange={this.handleInputChange}
-          />
-        </label>
-        <br />
-        <button style={button} onClick={this.submitForm}>
-          SUBMIT
-        </button>
-      </form>
+      <div>
+        <form autoComplete="off">
+        <input type='hidden' value='something'/>
+          <label style={labelStyle}>
+            To Name:
+            <input
+            autoComplete="off"
+              style={inputStyle}
+              name="toName"
+              value={this.state.toName}
+              onChange={this.handleInputChange}
+            />
+          </label>
+          <br />
+          <label style={labelStyle}>
+            To Email:
+            <input
+              autoComplete="off"
+              style={inputStyle}
+              name="toEmail"
+              value={this.state.toEmail}
+              onChange={this.handleInputChange}
+            />
+          </label>
+          <br />
+          <label style={labelStyle}>
+            Subject:
+            <input
+              style={inputStyle}
+              name="subject"
+              value={this.state.subject}
+              onChange={this.handleInputChange}
+            />
+          </label>
+          <br />
+          <label style={labelStyle}>
+            Noun 1:
+            <input
+              style={inputStyle}
+              name="noun1"
+              value={this.state.noun1}
+              onChange={this.handleInputChange}
+            />
+          </label>
+          <br />
+          <label style={labelStyle}>
+            Noun 2:
+            <input
+              style={inputStyle}
+              name="noun2"
+              value={this.state.noun2}
+              onChange={this.handleInputChange}
+            />
+          </label>
+          <br />
+          <label style={labelStyle}>
+            Adjective 1:
+            <input
+              style={inputStyle}
+              name="adjective1"
+              value={this.state.adjective1}
+              onChange={this.handleInputChange}
+            />
+          </label>
+          <br />
+          <label style={labelStyle}>
+            Adjective 2:
+            <input
+              style={inputStyle}
+              name="adjective2"
+              value={this.state.adjective2}
+              onChange={this.handleInputChange}
+            />
+          </label>
+          <br />
+          <button style={button} onClick={this.submitForm}>
+            SUBMIT
+          </button>
+        </form>
+      </div>
     );
   }
 }

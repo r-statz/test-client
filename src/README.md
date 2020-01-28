@@ -12,6 +12,7 @@
 # To send an email
 - Email me at `robinstatz@gmail.com` and I can whitelist your email address.
 - Be sure to manually enter all the fields
+- I've also noticed that with the delay on heorku, the 10 or more seconds upon firing it up the first time, the emails don't always go through the first time. When they don't I can immediately have success with Postman
 
 # Improvements
 - Clearly this is a janky form!!! (I guess that's what I get for 3 hrs)
