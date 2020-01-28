@@ -50,7 +50,7 @@ class App extends Component {
           To Name:
           <input
             name="toName"
-            value={this.state.toName}
+            value={this.state.to_name}
             onChange={this.handleInputChange}
           />
         </label>
@@ -59,7 +59,7 @@ class App extends Component {
           To Email:
           <input
             name="toEmail"
-            value={this.state.toEmail}
+            value={this.state.to}
             onChange={this.handleInputChange}
           />
         </label>
