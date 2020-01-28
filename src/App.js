@@ -51,7 +51,8 @@ class App extends Component {
     const inputStyle = {
       height: '30px',
       width: '300px',
-      marginLeft: '30px'
+      marginLeft: '30px',
+      marginBottom: '20px'
     };
     const labelStyle = {
       marginLeft: '10px',
@@ -81,7 +82,7 @@ class App extends Component {
         </label>
         <br />
         <label style={labelStyle}>
-          Email Subject:
+          Subject:
           <input
             style={inputStyle}
             name="subject"
@@ -91,7 +92,7 @@ class App extends Component {
         </label>
         <br />
         <label style={labelStyle}>
-          Email Body:
+          Message:
           <input
             style={inputStyle}
             name="body"
