@@ -4,8 +4,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      to_name: '',
-      to: '',
+      toName: '',
+      toEmail: '',
       subject: '',
       body: ''
     };
@@ -50,7 +50,7 @@ class App extends Component {
           To Name:
           <input
             name="toName"
-            value={this.state.to_name}
+            value={this.state.toName}
             onChange={this.handleInputChange}
           />
         </label>
@@ -59,7 +59,7 @@ class App extends Component {
           To Email:
           <input
             name="toEmail"
-            value={this.state.to}
+            value={this.state.toEmail}
             onChange={this.handleInputChange}
           />
         </label>
