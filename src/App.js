@@ -62,17 +62,22 @@ class App extends Component {
     const button = {
       height: '30px',
       width: '100px',
-      backgroundColor: 'yellow'
+      backgroundColor: 'maroon',
+      fontSize: '18px',
+      color: 'white',
+      fontWeight: 'bold'
     };
     const inputStyle = {
       height: '30px',
       width: '300px',
       marginLeft: '30px',
-      marginBottom: '20px'
+      marginBottom: '20px',
+      fontSize: '18px'
     };
     const labelStyle = {
       marginLeft: '10px',
-      marginRight: '40px'
+      marginRight: '40px',
+      fontSize: '18px'
     };
     return (
       <div>
