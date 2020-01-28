@@ -9,6 +9,7 @@ class App extends Component {
       subject: '',
       body: ''
     };
+
     this.handleInputChange = this.handleInputChange.bind(this);
     this.submitForm = this.submitForm.bind(this);
   }
@@ -43,11 +44,12 @@ class App extends Component {
     });
   }
   render() {
+    let message;
     const button = {
       height: '30px',
       width: '100px',
       backgroundColor: 'yellow'
-    }
+    };
     const inputStyle = {
       height: '30px',
       width: '300px',
@@ -57,10 +59,9 @@ class App extends Component {
     const labelStyle = {
       marginLeft: '10px',
       marginRight: '40px'
-
-    }
+    };
     return (
-      <form >
+      <form>
         <label style={labelStyle}>
           To Name:
           <input
@@ -101,7 +102,9 @@ class App extends Component {
           />
         </label>
         <br />
-        <button style={button} onClick={this.submitForm}>SUBMIT</button>
+        <button style={button} onClick={this.submitForm}>
+          SUBMIT
+        </button>
       </form>
     );
   }
