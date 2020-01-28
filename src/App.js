@@ -50,9 +50,11 @@ class App extends Component {
     }
     const inputStyle = {
       height: '30px',
-      width: '300px'
+      width: '300px',
+      marginLeft: '30px'
     };
     const labelStyle = {
+      marginLeft: '10px',
       marginRight: '40px'
 
     }
