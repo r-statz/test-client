@@ -7,9 +7,9 @@ class App extends Component {
       toName: '',
       toEmail: '',
       subject: '',
-      body: ''
+      body: '',
+      message: ''
     };
-
     this.handleInputChange = this.handleInputChange.bind(this);
     this.submitForm = this.submitForm.bind(this);
   }
@@ -28,9 +28,12 @@ class App extends Component {
           body: JSON.stringify(this.state)
         }
       );
-      await emailResponse.json();
+      const x = await emailResponse.json();
+      this.setState({message : x})
+      console.log(this.state.message, "this.state.message")
     } catch (e) {
       console.log(e, 'e');
+      this.setState({message: e})
     }
   };
 
@@ -44,7 +47,6 @@ class App extends Component {
     });
   }
   render() {
-    let message;
     const button = {
       height: '30px',
       width: '100px',
@@ -105,6 +107,7 @@ class App extends Component {
         <button style={button} onClick={this.submitForm}>
           SUBMIT
         </button>
+        <div>{this.state.message}</div>
       </form>
     );
   }

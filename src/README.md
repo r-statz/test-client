@@ -18,3 +18,4 @@
 
 # To send an email
 - Email me at `robinstatz@gmail.com` and I can whitelist your email address.
+- Be sure to manually enter all the fields
