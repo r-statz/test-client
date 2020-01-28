@@ -14,7 +14,6 @@ class App extends Component {
   }
 
   submitForm = async () => {
-    console.log(this.state, 'this state');
     try {
       const emailResponse = await fetch(`https://statz-server.herokuapp.com/api/email`, {
           method: 'POST',
@@ -25,8 +24,7 @@ class App extends Component {
           },
           body: JSON.stringify(this.state)
         });
-        const email = await emailResponse.json();
-      console.log(email)
+        await emailResponse.json();
     } catch(e) {
       console.log(e, "e")
     }
