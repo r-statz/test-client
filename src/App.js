@@ -42,44 +42,63 @@ class App extends Component {
       [name]: value
     });
   }
-
   render() {
+    const button = {
+      height: '30px',
+      width: '100px',
+      backgroundColor: 'yellow'
+    }
+    const inputStyle = {
+      height: '30px',
+      width: '300px'
+    };
+    const labelStyle = {
+      marginRight: '40px'
+
+    }
     return (
-      <form>
-        <label>
+      <form >
+        <label style={labelStyle}>
           To Name:
           <input
+            style={inputStyle}
             name="toName"
             value={this.state.toName}
             onChange={this.handleInputChange}
           />
         </label>
         <br />
-        <label>
+        <label style={labelStyle}>
           To Email:
           <input
+            style={inputStyle}
             name="toEmail"
             value={this.state.toEmail}
             onChange={this.handleInputChange}
           />
         </label>
-        <label>
+        <br />
+        <label style={labelStyle}>
           Email Subject:
           <input
+            style={inputStyle}
             name="subject"
             value={this.state.subject}
             onChange={this.handleInputChange}
           />
         </label>
-        <label>
+        <br />
+        <label style={labelStyle}>
           Email Body:
           <input
+            style={inputStyle}
             name="body"
             value={this.state.body}
             onChange={this.handleInputChange}
           />
         </label>
-        <button onClick={this.submitForm}>SUBMIT</button>
+        <br />
+        <button style={button} onClick={this.submitForm}>SUBMIT</button>
       </form>
     );
   }
