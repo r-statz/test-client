@@ -4,8 +4,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      toName: '',
-      toEmail: '',
+      to_name: '',
+      to: '',
       subject: '',
       body: ''
     };
@@ -15,7 +15,9 @@ class App extends Component {
 
   submitForm = async () => {
     try {
-      const emailResponse = await fetch(`https://statz-server.herokuapp.com/api/email`, {
+      const emailResponse = await fetch(
+        `https://statz-server.herokuapp.com/api/email`,
+        {
           method: 'POST',
           credentials: 'same-origin',
           headers: {
@@ -23,13 +25,13 @@ class App extends Component {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify(this.state)
-        });
-        await emailResponse.json();
-    } catch(e) {
-      console.log(e, "e")
+        }
+      );
+      await emailResponse.json();
+    } catch (e) {
+      console.log(e, 'e');
     }
-
-  }
+  };
 
   handleInputChange(event) {
     const target = event.target;
