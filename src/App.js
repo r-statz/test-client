@@ -7,31 +7,22 @@ class App extends Component {
       toName: '',
       toEmail: '',
       subject: '',
-      // body: ''
       noun1: '',
       noun2: '',
       adjective1: '',
-      adjective2: ''
+      adjective2: '',
+      message: '',
+      errors: []
     };
-
     this.handleInputChange = this.handleInputChange.bind(this);
     this.submitForm = this.submitForm.bind(this);
   }
 
   submitForm = async () => {
-    if (
-      !this.state.toName.length ||
-      !this.state.toEmail.length ||
-      !this.state.subject.length ||
-      !this.state.noun1.length ||
-      !this.state.noun2.length ||
-      !this.state.adjective1.length ||
-      !this.state.adjective2.length
-    ) {
-      alert('All of the fields are required.');
-    }
+    console.log(this.state, 'this.state before the try');
     try {
       const emailResponse = await fetch(
+        // 'http://localhost:8000/api/email',
         `https://statz-server.herokuapp.com/api/email`,
         {
           method: 'POST',
@@ -43,7 +34,12 @@ class App extends Component {
           body: JSON.stringify(this.state)
         }
       );
-      await emailResponse.json();
+      const x = await emailResponse.json();
+      if (x.hasOwnProperty('errors')) {
+        this.setState({ errors: x.errors.errors, message: '' });
+      } else {
+        this.setState({ message: x.message, errors: [] });
+      }
     } catch (e) {
       console.log(e, 'e');
     }
@@ -59,106 +55,118 @@ class App extends Component {
     });
   }
   render() {
+    const container = {
+      height: '100vh',
+      width: '100vw',
+      textAlign: 'center'
+    };
     const button = {
-      height: '30px',
-      width: '100px',
+      height: '40px',
+      width: '140px',
       backgroundColor: 'maroon',
       fontSize: '18px',
       color: 'white',
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      borderRadius: '4px'
+    };
+    const topInput = {
+      marginTop: '60px',
+      height: '30px',
+      width: '300px',
+      marginLeft: '30px',
+      marginBottom: '20px',
+      fontSize: '18px',
+      paddingLeft: '10px'
     };
     const inputStyle = {
       height: '30px',
       width: '300px',
       marginLeft: '30px',
       marginBottom: '20px',
-      fontSize: '18px'
+      fontSize: '18px',
+      paddingLeft: '10px'
     };
-    const labelStyle = {
-      marginLeft: '10px',
-      marginRight: '40px',
-      fontSize: '18px'
+    const success = {
+      color: 'maroon',
+      marginTop: '20px'
     };
+
     return (
-      <div>
-        <form autoComplete="off">
-        <input type='hidden' value='something'/>
-          <label style={labelStyle}>
-            To Name:
-            <input
+      <div style={container}>
+        <div autoComplete="off">
+          <input type="hidden" value="something" />
+          <input
             autoComplete="off"
-              style={inputStyle}
-              name="toName"
-              value={this.state.toName}
-              onChange={this.handleInputChange}
-            />
-          </label>
+            style={topInput}
+            name="toName"
+            placeholder="To name"
+            value={this.state.toName}
+            onChange={this.handleInputChange}
+          />
           <br />
-          <label style={labelStyle}>
-            To Email:
-            <input
-              autoComplete="off"
-              style={inputStyle}
-              name="toEmail"
-              value={this.state.toEmail}
-              onChange={this.handleInputChange}
-            />
-          </label>
+          <input
+            autoComplete="off"
+            style={inputStyle}
+            name="toEmail"
+            placeholder="To email"
+            value={this.state.toEmail}
+            onChange={this.handleInputChange}
+          />
           <br />
-          <label style={labelStyle}>
-            Subject:
-            <input
-              style={inputStyle}
-              name="subject"
-              value={this.state.subject}
-              onChange={this.handleInputChange}
-            />
-          </label>
+          <input
+            style={inputStyle}
+            name="subject"
+            placeholder="Subject"
+            value={this.state.subject}
+            onChange={this.handleInputChange}
+          />
           <br />
-          <label style={labelStyle}>
-            Noun 1:
-            <input
-              style={inputStyle}
-              name="noun1"
-              value={this.state.noun1}
-              onChange={this.handleInputChange}
-            />
-          </label>
+          <input
+            style={inputStyle}
+            name="noun1"
+            placeholder="Noun 1"
+            value={this.state.noun1}
+            onChange={this.handleInputChange}
+          />
           <br />
-          <label style={labelStyle}>
-            Noun 2:
-            <input
-              style={inputStyle}
-              name="noun2"
-              value={this.state.noun2}
-              onChange={this.handleInputChange}
-            />
-          </label>
+          <input
+            style={inputStyle}
+            name="noun2"
+            placeholder="Noun 2"
+            value={this.state.noun2}
+            onChange={this.handleInputChange}
+          />
           <br />
-          <label style={labelStyle}>
-            Adjective 1:
-            <input
-              style={inputStyle}
-              name="adjective1"
-              value={this.state.adjective1}
-              onChange={this.handleInputChange}
-            />
-          </label>
+          <input
+            style={inputStyle}
+            name="adjective1"
+            placeholder="Adjective 1"
+            value={this.state.adjective1}
+            onChange={this.handleInputChange}
+          />
           <br />
-          <label style={labelStyle}>
-            Adjective 2:
-            <input
-              style={inputStyle}
-              name="adjective2"
-              value={this.state.adjective2}
-              onChange={this.handleInputChange}
-            />
-          </label>
+          <input
+            style={inputStyle}
+            name="adjective2"
+            placeholder="Adjective 2"
+            value={this.state.adjective2}
+            onChange={this.handleInputChange}
+          />
           <br />
           <button style={button} onClick={this.submitForm}>
             SUBMIT
           </button>
-        </form>
+          <h3 style={success}>{this.state.message}</h3>
+          {this.state.errors.length ? (
+            <div>
+              {this.state.errors.map((value, index) => {
+                return <div key={index}>{value}</div>;
+              })}
+            </div>
+          ) : (
+            <div></div>
+          )}
+        </div>
       </div>
     );
   }
