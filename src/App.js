@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+// import flowers from './flowers.jpeg'
 class App extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +19,6 @@ class App extends Component {
   }
 
   submitForm = async () => {
-    console.log(this.state, 'this.state before the try');
     try {
       const emailResponse = await fetch(
         // 'http://localhost:8000/api/email',
@@ -58,7 +57,8 @@ class App extends Component {
     const container = {
       height: '100vh',
       width: '100vw',
-      textAlign: 'center'
+      textAlign: 'center', 
+      // backgroundImage: `url(${flowers}`
     };
     const button = {
       height: '40px',
