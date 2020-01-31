@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import flowers from './flowers.jpeg'
 class App extends Component {
   constructor(props) {
     super(props);
@@ -58,7 +57,6 @@ class App extends Component {
       height: '100vh',
       width: '100vw',
       textAlign: 'center', 
-      // backgroundImage: `url(${flowers}`
     };
     const button = {
       height: '40px',
